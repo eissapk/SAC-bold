@@ -9,7 +9,7 @@ export interface IMetaData {
 
 
 export class ApiService {
-    protected apiUrl = process.env.API_ENDPOINT || 'https://base-and-boon-cms-2zkq2bh4ma-uc.a.run.app/';
+    protected apiUrl = process.env.API_ENDPOINT || 'https://sac-cms-{id}-uc.a.run.app/'; // todo: modify this once the cms is ready
     private locale: string;
     protected translatedSlug: string | undefined;
     protected metaData: IMetaData | undefined;
@@ -93,7 +93,7 @@ export class ApiService {
               notFound: true
           };
       } else {
-          if (api == 'services-pages' || api == "news") {
+          if (api == 'services-pages') {
               if (dataItem && dataItem.attributes.localizations.data && dataItem.attributes.localizations.data.length > 0 && dataItem.attributes.localizations.data[0].id) {
                   // const translatedPage = await fetch(encodeURI(this.apiUrl + `/` + api + '/' + dataItem.attributes.localizations.data[0].id));
                   // const translatedPageJson = await translatedPage.json()
