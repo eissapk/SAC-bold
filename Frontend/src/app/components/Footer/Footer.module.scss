@@ -1,4 +1,32 @@
 .section {
-  &.ar {
+  --innerSpaceTop: 1.5vw;
+  .layer {
+  }
+  .sectionContainer {
+    padding-top: 3.3vw;
+    padding-bottom: 2.75vw;
+    .upper {
+      .joinUs {
+        .joinUsTitle {
+          margin-bottom: var(--innerSpaceTop);
+        }
+        .joinUsLinks {
+        }
+      }
+
+      .links {
+        margin-top: var(--innerSpaceTop);
+      }
+      .newsLetter {
+        .newsLetterTitle {
+          margin-bottom: var(--innerSpaceTop);
+        }
+      }
+    }
+
+    .lower {
+    }
+    &.ar {
+    }
   }
 }

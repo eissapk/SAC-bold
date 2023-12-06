@@ -7,7 +7,7 @@ export default async function page({ params }) {
 
   return (
     <>
-      <Header locale={params.lang} />
+      {/* <Header locale={params.lang} /> */}
 
       <Footer locale={params.lang} />
     </>

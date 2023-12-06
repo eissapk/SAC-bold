@@ -2,9 +2,9 @@
 
 module.exports = {
   output: "standalone",
-  i18n: {
-    locales: ["default", "en", "ar"],
-    defaultLocale: "en",
-    localeDetection: false,
-  },
+  // i18n: {
+  //   locales: ["default", "en", "ar"],
+  //   defaultLocale: "default",
+  //   localeDetection: false,
+  // },
 };

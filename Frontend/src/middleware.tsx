@@ -1,11 +1,11 @@
 import acceptLanguage from "accept-language";
-import { NextResponse, NextMiddleware } from "next/server";
+import { NextResponse } from "next/server";
 
 // Register available locales
 acceptLanguage.languages(["ar", "en"]);
 
 // Middleware to redirect to the correct locale if none is given
-export let middleware = (request) => {
+export let middleware = request => {
   if (
     // Not a file in /public
     !/\.(.*)$/.test(request.nextUrl.pathname) &&
