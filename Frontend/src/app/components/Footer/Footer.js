@@ -37,8 +37,8 @@ function Footer({ locale }) {
             <div className={cx("", styles.joinUs)}>
               <div className={cx("overHeadTitle-size text-clay font-pr-medium", [styles.joinUsTitle])}>Join us</div>
               <ul className={styles.joinUsLinks}>
-                {joinUsLinks.map(item => (
-                  <li>
+                {joinUsLinks.map((item, index) => (
+                  <li key={index}>
                     <Link className="h4 text-weave font-pr-light leading-none" href={item.link}>
                       {item.label}
                     </Link>
@@ -49,8 +49,8 @@ function Footer({ locale }) {
 
             <div className={styles.links}>
               <ul>
-                {siteMapLinks.map(item => (
-                  <li>
+                {siteMapLinks.map((item, index) => (
+                  <li key={index}>
                     <Link className="h4 text-weave footer-title-size font-pr-light leading-none" href={item.link}>
                       {item.label}
                     </Link>

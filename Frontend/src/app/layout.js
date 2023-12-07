@@ -1,4 +1,4 @@
-import "@/styles/globals.scss";
+import "@/src/styles/globals.scss";
 
 export const metadata = {
   title: "SAC | Saudi artisanal company",

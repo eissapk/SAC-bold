@@ -1,4 +1,66 @@
 .section {
+  @apply fixed left-0 top-0 z-[999] w-full py-[2.2vw] flex items-center justify-between;
+
+  .menuIcon {
+    @apply min-w-[25%];
+
+    button {
+      img {
+        @apply block pointer-events-none;
+      }
+    }
+  }
+  .logo {
+  }
+  .links {
+    @apply min-w-[25%];
+    ul {
+      @apply flex justify-end;
+      li {
+        &:first-of-type {
+          a {
+            @apply text-weave font-pr-medium border-b-2 border-weave;
+          }
+        }
+
+        &:last-of-type {
+          a {
+            @apply text-weave font-pr-medium border-none;
+          }
+        }
+      }
+    }
+  }
+
+  &.scrolled {
+    @apply bg-weave py-[1vw] transition-all;
+
+    .links {
+      ul {
+        li {
+          &:first-of-type {
+            a {
+              @apply text-grey border-grey;
+            }
+          }
+
+          &:last-of-type {
+            a {
+              @apply text-grey;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &.ar {
+    .menuIcon {
+      button {
+        img {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
 }

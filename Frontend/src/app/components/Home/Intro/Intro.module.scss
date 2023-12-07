@@ -1,0 +1,26 @@
+.section {
+  @apply relative h-[100vh];
+  .video {
+    @apply w-full h-full;
+    img {
+      @apply h-full w-auto object-cover;
+    }
+    video {
+    }
+  }
+  .content {
+    @apply absolute left-0 top-0 w-full h-full;
+
+    .innerContent {
+      @apply absolute left-0 right-0 top-[40%] translate-y-[-40%];
+      .title {
+        @apply pt-1 text-weave font-pr-light text-center w-[55%] mx-auto;
+      }
+    }
+  }
+  .item {
+    @apply absolute right-0 -bottom-[1vw];
+  }
+  &.ar {
+  }
+}

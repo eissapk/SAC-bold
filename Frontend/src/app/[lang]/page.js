@@ -1,14 +1,16 @@
-import { ApiService } from "@/lib/api.service";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import { ApiService } from "@/src/lib/api.service";
+import Header from "@/src/app/components/Header/Header";
+import Intro from "@/src/app/components/Home/Intro/Intro";
+import Footer from "@/src/app/components/Footer/Footer";
 
 export default async function page({ params }) {
   // const [data] = getPageData(params.lang);
 
   return (
     <>
-      {/* <Header locale={params.lang} /> */}
-
+      <Header locale={params.lang} />
+      <Intro locale={params.lang} />
+      {/* products */}
       <Footer locale={params.lang} />
     </>
   );
