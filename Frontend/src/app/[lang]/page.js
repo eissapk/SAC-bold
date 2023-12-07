@@ -3,6 +3,9 @@ import Header from "@/src/app/components/Header/Header";
 import Intro from "@/src/app/components/Home/Intro/Intro";
 import Products from "@/src/app/components/Home/Products/Products";
 import Summary from "@/src/app/components/Home/Summary/Summary";
+import CustomPieces from "@/src/app/components/Home/CustomPieces/CustomPieces";
+import Philosophy from "@/src/app/components/Home/Philosophy/Philosophy";
+import News from "@/src/app/components/Home/News/News";
 import Footer from "@/src/app/components/Footer/Footer";
 
 export default async function page({ params }) {
@@ -14,7 +17,9 @@ export default async function page({ params }) {
       <Intro locale={params.lang} />
       <Products locale={params.lang} />
       <Summary locale={params.lang}/>
-      {/* custom pieces */}
+      <CustomPieces locale={params.lang}/>
+      <Philosophy locale={params.lang} />
+      <News locale={params.lang} />
       <Footer locale={params.lang} />
     </>
   );

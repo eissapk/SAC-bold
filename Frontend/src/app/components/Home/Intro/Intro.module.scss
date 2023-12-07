@@ -4,7 +4,7 @@
     @apply relative w-full h-full -z-10;
     
     &::after {
-      @apply content-[''] absolute w-full h-full left-0 top-0 bg-layer1/30;
+      @apply content-[''] absolute w-full h-full left-0 top-0 bg-introLayer/30;
     }
 
     img {

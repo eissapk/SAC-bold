@@ -107,6 +107,12 @@ h6 { font-size: var(--h6-size); }
   padding-left: var(--spaceX);
   padding-right: var(--spaceX);
 }
+.spaceX-start { 
+  padding-inline-start: var(--spaceX);
+}
+.spaceX-end { 
+  padding-inline-end: var(--spaceX);
+}
 .spaceX-minor { 
   padding-left: var(--spaceX-minor);
   padding-right: var(--spaceX-minor);
@@ -114,6 +120,7 @@ h6 { font-size: var(--h6-size); }
 
 body {
   font-family: var(--primaryRegularFont);
+  @apply bg-weave;
 }
 
 // RTL

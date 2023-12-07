@@ -3,6 +3,8 @@ import styles from "./Summary.module.scss";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import Image from "next/image";
 import summary from "@/public/assets/media/home/summary.png";
+import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 function Summary({ locale = "en" }) {
   return (
@@ -14,7 +16,9 @@ function Summary({ locale = "en" }) {
         </div>
 
         <div className={cx("paragraph2-size", styles.description)}>
-          <p className="w-[29%]">Delivering stories of impact woven from the legacies of the past and paving the roads towards contemporary artistry and craftsmanship.</p>
+          <Markdown className="w-[29%]" rehypePlugins={[rehypeRaw]}>
+            Delivering stories of impact woven from the legacies of the past and paving the roads towards contemporary artistry and craftsmanship.
+          </Markdown>
         </div>
       </div>
 

@@ -1,0 +1,44 @@
+.section {
+  @apply relative;
+  .image {
+    @apply relative w-full h-full -z-10;
+    &::after {
+      @apply content-[''] absolute w-full h-full left-0 top-0 bg-customPiecesLayer/40;
+    }
+    img {
+      @apply h-auto w-full object-cover;
+    }
+  }
+
+  .content {
+    @apply absolute left-0 top-0 w-full h-full;
+    .innerContent {
+      @apply absolute left-0 right-0 top-[55%] translate-y-[-55%];
+      .title {
+        @apply pt-1 text-weave font-pr-light text-center w-[60%] mx-auto;
+      }
+      .description {
+        @apply text-weave font-pr-regular text-center pt-[1.6vw] w-[33%] mx-auto;
+      }
+      .cta {
+        @apply flex gap-x-[1.9vw] justify-center pt-[3.1vw];
+      }
+      .logos {
+        @apply pt-[6vw];
+        padding: {
+          left: calc(var(--spaceX) * 3);
+          right: calc(var(--spaceX) * 3);
+        }
+        ul {
+          @apply flex justify-between w-full;
+          li {
+            img {
+            }
+          }
+        }
+      }
+    }
+  }
+  &.ar {
+  }
+}
