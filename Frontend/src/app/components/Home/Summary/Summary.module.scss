@@ -1,0 +1,18 @@
+.section {
+  @apply bg-weave;
+  .sectionContainer {
+    .title {
+      @apply font-pr-light text-grey pt-1 w-[80%];
+    }
+    .description {
+      @apply flex justify-end font-pr-regular text-grey pt-[7vw] pb-[4.2vw] w-[73%];
+    }
+  }
+  .video {
+    img {
+      @apply block w-full h-auto;
+    }
+  }
+  &.ar {
+  }
+}

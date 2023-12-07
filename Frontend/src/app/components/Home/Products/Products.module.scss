@@ -1,0 +1,35 @@
+.section {
+  @apply bg-weave pt-[4.2vw];
+  .title {
+    @apply text-grey font-pr-light pb-[7vw];
+  }
+  .products {
+    @apply grid grid-cols-2 gap-[1vw];
+    .product {
+      @apply relative;
+      .image {
+        img {
+          @apply w-full;
+        }
+      }
+
+      .content {
+        @apply absolute w-full left-0 bottom-0 flex items-center justify-between px-[1.5vw];
+        .innerContent {
+          @apply w-[40%];
+        }
+        .label {
+          @apply text-grey font-pr-light;
+        }
+        .contentTitle {
+          @apply font-pr-light text-grey pb-[2vw] pt-1;
+        }
+        .cta {
+          @apply self-end pb-[2vw] pe-1;
+        }
+      }
+    }
+  }
+  &.ar {
+  }
+}

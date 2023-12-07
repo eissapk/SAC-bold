@@ -1,6 +1,8 @@
 import { ApiService } from "@/src/lib/api.service";
 import Header from "@/src/app/components/Header/Header";
 import Intro from "@/src/app/components/Home/Intro/Intro";
+import Products from "@/src/app/components/Home/Products/Products";
+import Summary from "@/src/app/components/Home/Summary/Summary";
 import Footer from "@/src/app/components/Footer/Footer";
 
 export default async function page({ params }) {
@@ -10,7 +12,9 @@ export default async function page({ params }) {
     <>
       <Header locale={params.lang} />
       <Intro locale={params.lang} />
-      {/* products */}
+      <Products locale={params.lang} />
+      <Summary locale={params.lang}/>
+      {/* custom pieces */}
       <Footer locale={params.lang} />
     </>
   );

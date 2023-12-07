@@ -9,7 +9,7 @@ import cx from "classnames";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-function Header({ locale }) {
+function Header({ locale="en" }) {
   const [scrolled, setScrolled] = useState(false);
   function headerHandler() {
     if (window.pageYOffset >= 100) setScrolled(true);
@@ -28,7 +28,9 @@ function Header({ locale }) {
         </button>
       </div>
       <div className={styles.logo}>
-        <Image src={scrolled ? logoDark : logo} alt="logo" />
+        <Link href={"/"+locale}>
+          <Image src={scrolled ? logoDark : logo} alt="logo" />
+        </Link>
       </div>
       <div className={styles.links}>
         <ul>

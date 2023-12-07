@@ -6,7 +6,7 @@ import Image from "next/image";
 import edge from "../../../../public/assets/media/footer-raw-edge.svg";
 import logo from "../../../../public/assets/media/logo.svg";
 
-function Footer({ locale }) {
+function Footer({ locale="en" }) {
   const joinUsLinks = [
     { link: "/" + locale + "/artisan", label: "As artisan" },
     { link: "/" + locale + "/designer", label: "As designer" },
@@ -83,7 +83,9 @@ function Footer({ locale }) {
             Saudi Artisanal Company © Copyright 2023
           </div>
           <div className={cx("relative top-1.5", styles.logo)}>
-            <Image src={logo} alt="logo" className="block" />
+            <Link href={"/"+locale}>
+              <Image src={logo} alt="logo" className="block" />
+            </Link>
           </div>
         </div>
       </div>

@@ -5,8 +5,9 @@ import introVideoPoster from "@/public/assets/media/home/intro.png";
 import Image from "next/image";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import item from "@/public/assets/media/home/item1.svg";
+import edge from "@/public/assets/media/home/intro-raw-edge.svg";
 
-function Intro({ locale }) {
+function Intro({ locale = "en" }) {
   return (
     <div className={cx(styles.section, { [styles.ar]: locale == "ar" })}>
       <div className={styles.video}>
@@ -28,7 +29,11 @@ function Intro({ locale }) {
       </div>
 
       <div className={styles.item}>
-        <Image src={item} alt="item-1"/>
+        <Image src={item} alt="item-1" />
+      </div>
+
+      <div className={cx("", styles.edge)}>
+        <Image src={edge} alt="footer-raw-edge" priority={false} />
       </div>
     </div>
   );

@@ -1,7 +1,12 @@
 .section {
   @apply relative h-[100vh];
   .video {
-    @apply w-full h-full;
+    @apply relative w-full h-full -z-10;
+    
+    &::after {
+      @apply content-[''] absolute w-full h-full left-0 top-0 bg-layer1/30;
+    }
+
     img {
       @apply h-full w-auto object-cover;
     }
@@ -19,7 +24,13 @@
     }
   }
   .item {
-    @apply absolute right-0 -bottom-[1vw];
+    @apply absolute right-0 -bottom-[1vw] z-10;
+  }
+  .edge {
+    @apply absolute left-0 -bottom-0.5 w-full;
+    img {
+      @apply block w-full h-auto;
+    }
   }
   &.ar {
   }

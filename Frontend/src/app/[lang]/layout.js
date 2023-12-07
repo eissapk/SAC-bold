@@ -57,7 +57,9 @@ export default function RootLayout({ children, params }) {
 
   return (
     <html lang={locale} dir={locale === "en" ? "ltr" : "rtl"}>
-      <body className={fontClasses}>{children}</body>
+      <body className={fontClasses}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -24,6 +24,7 @@ module.exports = {
         magenta: "var(--magenta)",
         separators: "var(--separators)",
         darkGrey: "var(-darkGrey)",
+        layer1:"#49230D"
       },
       fontFamily: {
         "pr-light": "var(--primaryLightFont)",
