@@ -8,7 +8,7 @@
     }
 
     img {
-      @apply h-full w-auto object-cover;
+      @apply h-full w-auto object-cover min-w-full;
     }
     video {
     }
