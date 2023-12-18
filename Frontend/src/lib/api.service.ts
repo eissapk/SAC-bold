@@ -9,7 +9,8 @@ export interface IMetaData {
 
 
 export class ApiService {
-    protected apiUrl = process.env.API_ENDPOINT || 'https://sac-cms-{id}-uc.a.run.app/'; // todo: modify this once the cms is ready
+    // protected apiUrl = process.env.API_ENDPOINT;
+    protected apiUrl =  'http://localhost:1337/'
     private locale: string;
     protected translatedSlug: string | undefined;
     protected metaData: IMetaData | undefined;
@@ -27,6 +28,8 @@ export class ApiService {
         locale += select ? '&select=' + select : '';
         locale += populate ? '&populate=' + populate : '';
         const url = encodeURI(this.apiUrl + `api/` + api + locale);
+        console.log(url);
+        
 
         const fetchData = await fetch(url, { next: { revalidate: 10 } })
         const fetchJson = await fetchData.json()
