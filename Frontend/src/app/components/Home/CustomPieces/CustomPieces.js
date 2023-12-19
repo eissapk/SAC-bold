@@ -12,7 +12,21 @@ import logo3 from "@/public/assets/media/home/logos/logo3.svg";
 import logo4 from "@/public/assets/media/home/logos/logo4.svg";
 import logo5 from "@/public/assets/media/home/logos/logo5.svg";
 
-function CustomPieces({ locale = "en" }) {
+const dummy_customPieces = {
+  label: "Custom Pieces",
+  title: "Sculpting your imagination into pieces of exquisite artistry rooted in heritage and branched with modernity",
+  description: "Create your own custom pieces in collaboration with our artisans through a detailed craftsmanship process.",
+  cta1 : {
+    label: "View our case studies",
+    url: "/case-study",
+  },
+  cta2 : {
+    label: "Bring your imagination to life",
+    url: "/creations",
+  }
+};
+
+function CustomPieces({ locale = "en", customPieces = dummy_customPieces }) {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo3];
 
   return (
@@ -23,18 +37,18 @@ function CustomPieces({ locale = "en" }) {
 
       <div className={styles.content}>
         <div className={styles.innerContent}>
-          <SectionTitle color="text-weave" label="Custom Pieces" locale={locale} />
+          <SectionTitle color="text-weave" label={customPieces.label} locale={locale} />
           <div className={styles.title}>
-            <h3 className="leading-none">Sculpting your imagination into pieces of exquisite artistry rooted in heritage and branched with modernity</h3>
+            <h3 className="leading-none">{customPieces.title}</h3>
           </div>
 
           <div className={cx("paragraph2-size", styles.description)}>
-            <Markdown rehypePlugins={[rehypeRaw]}>Create your own custom pieces in collaboration with our artisans through a detailed craftsmanship process.</Markdown>
+            <Markdown rehypePlugins={[rehypeRaw]}>{customPieces.description}</Markdown>
           </div>
 
           <div className={styles.cta}>
-            <CTA color="grey" bg="weave" locale={locale} link={"/" + locale + "/case-study"} type="button" label="View our case studies" />
-            <CTA color="weave" locale={locale} link={"/" + locale + "/creations"} type="link" label="Bring your imagination to life" />
+            <CTA color="grey" bg="weave" locale={locale} link={"/" + locale + customPieces.cta1.url} type="button" label={customPieces.cta1.label} />
+            <CTA color="weave" locale={locale} link={"/" + locale + customPieces.cta2.url} type="link" label={customPieces.cta2.label} />
           </div>
 
           <div className={styles.logos}>

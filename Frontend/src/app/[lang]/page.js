@@ -1,4 +1,4 @@
-import { ApiService } from "@/src/lib/api.service";
+import { ApiService, get } from "@/src/lib/api.service";
 import Header from "@/src/app/components/Header/Header";
 import Intro from "@/src/app/components/Home/Intro/Intro";
 import Products from "@/src/app/components/Home/Products/Products";
@@ -9,47 +9,51 @@ import News from "@/src/app/components/Home/News/News";
 import Footer from "@/src/app/components/Footer/Footer";
 
 export default async function page({ params }) {
-	const [data] = await getPageData(params.lang);
-	console.log(data);
+	const { data, blogs } = await getPageData(params.lang);
 
 	return (
 		<>
 			<Header locale={params.lang} />
-			<Intro locale={params.lang} />
-			<Products locale={params.lang} />
-			<Summary locale={params.lang} />
-			<CustomPieces locale={params.lang} />
-			<Philosophy locale={params.lang} />
-			<News locale={params.lang} />
+			<Intro locale={params.lang} intro={data?.data?.attributes?.intro} />
+			<Products locale={params.lang} products={data?.data?.attributes?.products} summary={data?.data?.attributes?.intro?.summary} />
+			<Summary locale={params.lang} summary={data?.data?.attributes?.summary} />
+			<CustomPieces locale={params.lang} customPieces={data?.data?.attributes?.customPieces} />
+			<Philosophy locale={params.lang} philosophy={data?.data?.attributes?.philosophy} />
+			<News locale={params.lang} news={data?.data?.attributes?.news} blogs={blogs?.data} />
 			<Footer locale={params.lang} />
 		</>
 	);
 }
 
-export async function generateMetadata({ params }) {
-	return {
-		title: "SAC | Saudi artisanal company",
-		description: "Inspired by the generosity and bestowments of the palm tree.",
-	};
+async function getPageData(locale) {
+	// use 127.0.0.1 instead of localhost for consuming endpoints of strapi in dev mode
+	// final url: http://localhost:1337/api/home/?locale=en&populate=intro,localizations
+	// base url : http://localhost:1337/api/
+	// home: single type name
+	// ?locale=en: locale type
+	// &populate=intro,localizations: fetch those separated by comma
+	// localizations: fetch the related language (e.g slug name in the other lang, for blog posts)
+	const [data, blogs] = await Promise.all([
+		get("home", locale, "intro,products,products.image,products.cta,summary,customPieces,customPieces.cta1,customPieces.cta2,philosophy,philosophy.cta,news.cta"),
+		get("news-presses", locale, "image"),
+	]);
+	return { data, blogs };
+}
 
-	const api = new ApiService(params.lang);
-	const metadata = await api.get("home-page", false, false, undefined, "SEO.image");
+// todo: fix undefined value
+export async function generateMetadata({ params }) {
+	const data = await get("home", "en", "seo,seo.image");
+	const seo = data?.data?.attributes?.seo;
 	return {
-		title: "SAC " + (metadata.SEO?.title && `| ${metadata.SEO?.title}`),
-		description: metadata.SEO?.description || "",
-		image: metadata.SEO?.image?.data?.attributes?.url || "",
+		title: seo?.title || "",
+		description: seo?.description || "",
+		image: seo?.image?.data?.attributes?.url || "",
 		openGraph: {
 			type: "website",
 			url: "",
-			title: `SAC | ${metadata.SEO?.title || ""}`,
-			description: metadata.SEO?.description || "",
-			images: [metadata.SEO?.image?.data?.attributes?.url || ""],
+			title: seo?.title || "",
+			description: seo?.description || "",
+			images: [seo?.image?.data?.attributes?.url || ""],
 		},
 	};
-}
-
-async function getPageData(locale) {
-	const api = new ApiService(locale);
-	const [data] = await Promise.all([api.get("home", true, false, undefined, "intro")]);
-	return { data };
 }

@@ -11,12 +11,22 @@ import CTA from "../../CTA/CTA";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
-function Philosophy({ locale = "en" }) {
+const dummy_philosophy = {
+  label: "Philosophy & method",
+  title: "Each creation is a masterpiece that enriches your everyday living with beauty and purpose",
+  description: "Creating a legacy that celebrates the rooted heritage of craftsmanship and the future that blossoms from it. Merging two worlds into a singular universe of beauty.",
+  cta: {
+    label: "See our studio",
+    url: "/studio"
+  }
+}
+
+function Philosophy({ locale = "en", philosophy = dummy_philosophy }) {
   return (
     <div className={cx(" bg-weave sectionPaddingTop spaceX-start", styles.section, { [styles.ar]: locale == "ar" })}>
-      <SectionTitle label="Philosophy & method" locale={locale} color="text-clay" align="start" />
+      <SectionTitle label={philosophy.label} locale={locale} color="text-clay" align="start" />
       <div className="title font-pr-light text-grey pt-[1.5vw] pb-[8.3vw]">
-        <h3 className="leading-none w-[70%]">Each creation is a masterpiece that enriches your everyday living with beauty and purpose</h3>
+        <h3 className="leading-none w-[70%]">{philosophy.title}</h3>
       </div>
 
       {/* todo: fix this part of 3 images below */}
@@ -32,12 +42,12 @@ function Philosophy({ locale = "en" }) {
         <div className="content relative">
           <div className="description pb-[2.4vw]">
             <Markdown rehypePlugins={[rehypeRaw]} className="paragraph2-size font-pr-regular text-grey w-[50%]">
-              Creating a legacy that celebrates the rooted heritage of craftsmanship and the future that blossoms from it. Merging two worlds into a singular universe of beauty.
+              {philosophy.description}
             </Markdown>
           </div>
 
           <div className="cta">
-            <CTA label="See our studio" locale={locale} link={"/" + locale + "/studio"} color="weave" bg="grey" type="button" />
+            <CTA label={philosophy.cta.label} locale={locale} link={"/" + locale + philosophy.cta.url} color="weave" bg="grey" type="button" />
           </div>
 
           <div className="image1 inline-block absolute right-0 top-[20%]">

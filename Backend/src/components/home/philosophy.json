@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_home_philosophies",
+  "info": {
+    "displayName": "philosophy"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta"
+    }
+  }
+}

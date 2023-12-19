@@ -1,18 +1,18 @@
 {
-  "collectionName": "components_home_intros",
+  "collectionName": "components_home_summaries",
   "info": {
-    "displayName": "intro",
+    "displayName": "summary",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
+    "label": {
       "type": "string"
     },
-    "description": {
+    "title": {
       "type": "text"
     },
-    "summary": {
+    "description": {
       "type": "text"
     }
   }

@@ -1,6 +1,5 @@
 "use client";
 import cx from "classnames";
-import Link from "next/link";
 import styles from "./News.module.scss";
 import img1 from "@/public/assets/media/home/news/news1.png";
 import img2 from "@/public/assets/media/home/news/news2.png";
@@ -8,7 +7,8 @@ import img3 from "@/public/assets/media/home/news/news3.png";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import CTA from "../../CTA/CTA";
+import CTA from "../CTA/CTA";
+import Link from "next/link";
 
 const dummy_blogs = [
 	{
@@ -63,10 +63,6 @@ const dummy_blogs = [
 
 const dummy_news = {
 	title: "Our news",
-	cta: {
-		label: "See all news",
-		url: "/news",
-	},
 };
 
 function News({ locale, news = dummy_news, blogs = dummy_blogs }) {
@@ -93,9 +89,6 @@ function News({ locale, news = dummy_news, blogs = dummy_blogs }) {
 							</div>
 						</Link>
 					))}
-				</div>
-				<div className="cta flex justify-center pt-[4.3vw]">
-					<CTA label={news.cta.label} color="weave" bg="grey" type="button" link={"/" + locale + news.cta.url} locale={locale} />
 				</div>
 			</div>
 		</div>
