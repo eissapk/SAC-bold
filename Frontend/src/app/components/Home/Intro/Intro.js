@@ -35,7 +35,7 @@ function Intro({ locale = "en", intro = dummy_intro }) {
 			</div>
 
 			<div className={styles.item}>
-				<Image src={item} alt="item-1" />
+				<Image src={item} alt="item-1" priority={true} />
 			</div>
 
 			<div className={cx("", styles.edge)}>

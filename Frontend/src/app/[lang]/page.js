@@ -13,16 +13,18 @@ export default async function page({ params }) {
 	const { data, blogs } = await getPageData(params.lang);
 
 	return (
-		<SmoothScroll>
+		<>
 			<Header locale={params.lang} />
-			<Intro locale={params.lang} intro={data?.data?.attributes?.intro} />
-			<Products locale={params.lang} products={data?.data?.attributes?.products} summary={data?.data?.attributes?.intro?.summary} />
-			<Summary locale={params.lang} summary={data?.data?.attributes?.summary} />
-			<CustomPieces locale={params.lang} customPieces={data?.data?.attributes?.customPieces} />
-			<Philosophy locale={params.lang} philosophy={data?.data?.attributes?.philosophy} />
-			<News locale={params.lang} news={data?.data?.attributes?.news} blogs={blogs?.data} />
-			<Footer locale={params.lang} />
-		</SmoothScroll>
+			<SmoothScroll>
+				<Intro locale={params.lang} intro={data?.data?.attributes?.intro} />
+				<Products locale={params.lang} products={data?.data?.attributes?.products} summary={data?.data?.attributes?.intro?.summary} />
+				<Summary locale={params.lang} summary={data?.data?.attributes?.summary} />
+				<CustomPieces locale={params.lang} customPieces={data?.data?.attributes?.customPieces} />
+				<Philosophy locale={params.lang} philosophy={data?.data?.attributes?.philosophy} />
+				<News locale={params.lang} news={data?.data?.attributes?.news} blogs={blogs?.data} />
+				<Footer locale={params.lang} />
+			</SmoothScroll>
+		</>
 	);
 }
 
@@ -41,9 +43,8 @@ async function getPageData(locale) {
 	return { data, blogs };
 }
 
-// todo: fix undefined value
 export async function generateMetadata({ params }) {
-	const data = await get("home", "en", "seo,seo.image");
+	const data = await get("home", params.lang, "seo,seo.image");
 	const seo = data?.data?.attributes?.seo;
 	return {
 		title: seo?.title || "",

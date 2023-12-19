@@ -21,8 +21,6 @@ async function getPageData(locale) {
 }
 
 export async function generateMetadata({ params }) {
-	// const data = await get("home", "en", "seo,seo.image");
-	// const seo = data?.data?.attributes?.seo;
 	return {
 		title: "SAC | Saudi artisanal company",
 		description: "Weaving the future of our culture through craftsmanship",

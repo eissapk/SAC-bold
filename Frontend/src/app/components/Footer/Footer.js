@@ -6,6 +6,7 @@ import Image from "next/image";
 import edge from "../../../../public/assets/media/footer-raw-edge.svg";
 import logo from "../../../../public/assets/media/logo.svg";
 import Map from "../Map/Map";
+import NewsLetter from "../Forms/NewsLetter/NewsLetter";
 
 function Footer({ locale = "en" }) {
 	const joinUsLinks = [
@@ -21,10 +22,6 @@ function Footer({ locale = "en" }) {
 		{ link: "/" + locale + "/workshops", label: "Workshops & artisans" },
 		{ link: "/" + locale + "/contact", label: "Contact" },
 	];
-
-	function submitHandler(e) {
-		e.preventDefault();
-	}
 
 	return (
 		<footer className={cx("", styles.section, { [styles.ar]: locale == "ar" })}>
@@ -63,19 +60,7 @@ function Footer({ locale = "en" }) {
 
 					<div className={styles.newsLetter}>
 						<div className={cx("overHeadTitle-size text-clay font-pr-medium", [styles.newsLetterTitle])}>Newsletter</div>
-
-						<form className="flex border-b-[1px] border-weave" onSubmit={submitHandler}>
-							<div>
-								<input
-									type="email"
-									placeholder="Your email"
-									className="pe-1 bg-transparent text-weave font-pr-regular paragraph1-size placeholder:text-weave placeholder:font-pr-regular border-none outline-none"
-								/>
-							</div>
-							<button type="submit" className="caption2-size text-weave font-pr-light">
-								Subscribe
-							</button>
-						</form>
+						<NewsLetter />
 					</div>
 				</div>
 

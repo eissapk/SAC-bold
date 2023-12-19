@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
-  output: "standalone",
+  // output: "standalone",
   reactStrictMode: false,
   // i18n: {
   //   locales: ["default", "en", "ar"],

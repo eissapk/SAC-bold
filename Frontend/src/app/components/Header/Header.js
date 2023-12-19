@@ -30,12 +30,12 @@ function Header({ locale = "en", layout = "fixed" }) {
 		if (!pathname) return "/" + code;
 
 		// todo fix this
-		const translatedSlug = localStorage.getItem("translatedSlug");
-		if (pathname.includes("/news/")) {
-			if (translatedSlug && (translatedSlug !== "null" || translatedSlug !== "undefined")) {
-				return "/" + code + "/news/" + translatedSlug;
-			}
-		}
+		// const translatedSlug = localStorage.getItem("translatedSlug");
+		// if (pathname.includes("/news/")) {
+		// 	if (translatedSlug && (translatedSlug !== "null" || translatedSlug !== "undefined")) {
+		// 		return "/" + code + "/news/" + translatedSlug;
+		// 	}
+		// }
 
 		return "/" + code + "/" + pathname.slice(1).split("/").slice(1).join("/");
 	}
