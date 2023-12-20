@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 function Header({ locale = "en", layout = "fixed" }) {
+	const [slug, setSlug] = useState(null);
 	const [scrolled, setScrolled] = useState(layout !== "fixed" ? true : false);
 	const pathname = usePathname();
 	function headerHandler() {
@@ -21,20 +22,18 @@ function Header({ locale = "en", layout = "fixed" }) {
 			setScrolled(true);
 		}
 	}
+
 	useEffect(() => {
+		setSlug(localStorage.getItem("translatedSlug"));
 		window.addEventListener("scroll", headerHandler);
 		return () => window.removeEventListener("scroll", headerHandler);
-	}, []);
+	}, [slug]);
 
 	function langSwitcher(code) {
 		if (!pathname) return "/" + code;
 
-		// todo fix this
-		const translatedSlug = localStorage.getItem("translatedSlug");
 		if (pathname.includes("/news/")) {
-			if (translatedSlug && (translatedSlug !== "null" || translatedSlug !== "undefined")) {
-				return "/" + code + "/news/" + translatedSlug;
-			}
+			return "/" + code + "/news/" + slug;
 		}
 
 		return "/" + code + "/" + pathname.slice(1).split("/").slice(1).join("/");
