@@ -1,4 +1,5 @@
 import "@/src/styles/globals.scss";
+import { useLocale } from "next-intl";
 import localFont from "next/font/local";
 
 // primary font
@@ -39,8 +40,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children, params }) {
-	console.log({ params });
-	const locale = params.lang || "en";
+	// console.log({ params });
+	// const locale = params.lang || "en";
+
+	const locale = useLocale();
 	const fontClasses = `${primaryLightFont.className}
         ${primaryLightFont.variable}
         ${primaryRegularFont.className}

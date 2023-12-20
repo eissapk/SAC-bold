@@ -30,12 +30,12 @@ function Header({ locale = "en", layout = "fixed" }) {
 		if (!pathname) return "/" + code;
 
 		// todo fix this
-		// const translatedSlug = localStorage.getItem("translatedSlug");
-		// if (pathname.includes("/news/")) {
-		// 	if (translatedSlug && (translatedSlug !== "null" || translatedSlug !== "undefined")) {
-		// 		return "/" + code + "/news/" + translatedSlug;
-		// 	}
-		// }
+		const translatedSlug = localStorage.getItem("translatedSlug");
+		if (pathname.includes("/news/")) {
+			if (translatedSlug && (translatedSlug !== "null" || translatedSlug !== "undefined")) {
+				return "/" + code + "/news/" + translatedSlug;
+			}
+		}
 
 		return "/" + code + "/" + pathname.slice(1).split("/").slice(1).join("/");
 	}
@@ -61,16 +61,16 @@ function Header({ locale = "en", layout = "fixed" }) {
 					</li>
 					{locale == "en" && (
 						<li>
-							<Link href={langSwitcher("ar")} className="overHeadTitle-size">
+							<a href={langSwitcher("ar")} className="overHeadTitle-size">
 								العربية
-							</Link>
+							</a>
 						</li>
 					)}
 					{locale == "ar" && (
 						<li>
-							<Link href={langSwitcher("en")} className="overHeadTitle-size">
+							<a href={langSwitcher("en")} className="overHeadTitle-size">
 								English
-							</Link>
+							</a>
 						</li>
 					)}
 				</ul>

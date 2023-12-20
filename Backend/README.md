@@ -1,3 +1,18 @@
+# backup/export data
+[refernce](https://docs.strapi.io/dev-docs/data-management/export)
+
+```
+npm run strapi export -- --file my-strapi-export --no-encrypt
+```
+
+# import data
+[refernce](https://docs.strapi.io/dev-docs/data-management/import)
+
+```
+npm run strapi import -- -f export_20221213105643.tar.gz.enc --force --key my-encryption-key
+npm run strapi import -- -f export_20221213105643.tar.gz --force
+```
+
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
-
-module.exports = {
+const withNextIntl = require('next-intl/plugin')();
+module.exports = withNextIntl({
   // output: "standalone",
   reactStrictMode: false,
   // i18n: {
@@ -8,4 +8,4 @@ module.exports = {
   //   defaultLocale: "default",
   //   localeDetection: false,
   // },
-};
+});

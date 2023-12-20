@@ -112,3 +112,6 @@ exports
 dist
 build
 .strapi-updater.json
+
+
+!my-strapi-export.tar.gz
