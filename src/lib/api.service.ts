@@ -92,7 +92,12 @@ export class ApiService {
         };
       } else {
         if (api == "services-pages") {
-          if (dataItem && dataItem.attributes.localizations.data && dataItem.attributes.localizations.data.length > 0 && dataItem.attributes.localizations.data[0].id) {
+          if (
+            dataItem &&
+            dataItem.attributes.localizations.data &&
+            dataItem.attributes.localizations.data.length > 0 &&
+            dataItem.attributes.localizations.data[0].id
+          ) {
             // const translatedPage = await fetch(encodeURI(this.apiUrl + `/` + api + '/' + dataItem.attributes.localizations.data[0].id));
             // const translatedPageJson = await translatedPage.json()
             this.translatedSlug = dataItem.attributes.localizations.data[0].attributes.url;
@@ -122,6 +127,7 @@ export class ApiService {
 }
 
 export async function get(api: string, locale: string = "en", populate: string = undefined) {
+  return {};
   let url = apiUrl;
   url += "api/" + api + "/?locale=" + locale;
   if (populate) url += "&populate=" + populate;
