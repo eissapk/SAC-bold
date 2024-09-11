@@ -16,8 +16,8 @@ function NewsItem({ locale, blog = {} }) {
 	return (
 		<div className={cx("bg-weave spaceX sectionPaddingBottom", styles.section, { [styles.ar]: locale === "ar" })}>
 			<div className="sectionContainer">
-				<img src={"http://localhost:1337" + blog.image.data.attributes.url} alt={blog.url} />
-				{/* <Image src={blog.image.data.attributes.url} alt={blog.url} /> */}
+				{/* <img src={"http://localhost:1337" + blog.image.data.attributes.url} alt={blog.url} /> */}
+				<Image src={blog?.image?.data?.attributes?.url} alt={blog.url} />
 				<br />
 				<h3>{blog.title}</h3>
 				<br />

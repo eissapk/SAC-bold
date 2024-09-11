@@ -7,7 +7,6 @@ import CustomPieces from "@/src/app/components/Home/CustomPieces/CustomPieces";
 import Philosophy from "@/src/app/components/Home/Philosophy/Philosophy";
 import News from "@/src/app/components/Home/News/News";
 import Footer from "@/src/app/components/Footer/Footer";
-import SmoothScroll from "@/src/app/components/SmoothScroll/SmoothScroll";
 
 export default async function page({ params }) {
   const { data, blogs } = await getPageData(params.lang);
@@ -15,7 +14,6 @@ export default async function page({ params }) {
   return (
     <>
       <Header locale={params.lang} />
-      {/* <SmoothScroll> */}
       <Intro locale={params.lang} intro={data?.data?.attributes?.intro} />
       <Products locale={params.lang} products={data?.data?.attributes?.products} summary={data?.data?.attributes?.intro?.summary} />
       <Summary locale={params.lang} summary={data?.data?.attributes?.summary} />
@@ -23,7 +21,6 @@ export default async function page({ params }) {
       <Philosophy locale={params.lang} philosophy={data?.data?.attributes?.philosophy} />
       <News locale={params.lang} news={data?.data?.attributes?.news} blogs={blogs?.data} />
       <Footer locale={params.lang} />
-      {/* </SmoothScroll> */}
     </>
   );
 }

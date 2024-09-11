@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import edge from "../../../../public/assets/media/footer-raw-edge.svg";
 import logo from "../../../../public/assets/media/logo.svg";
-import Map from "../Map/Map";
 import NewsLetter from "../Forms/NewsLetter/NewsLetter";
 
 function Footer({ locale = "en" }) {
@@ -64,14 +63,6 @@ function Footer({ locale = "en" }) {
           </div>
         </div>
 
-        {/* <div className="relative my-2 pb-[28vw]">
-					<Map
-						coords={{ lat: 21.836618279238696, lon: 39.49992243094176 }}
-						style="mapbox://styles/ahmedbold/clnl43gi4002x01pgg4ajcy71"
-						token={"pk.eyJ1IjoiZWlzc2FwayIsImEiOiJjbHAxNnpzMzgwaWozMmpzNmdqaWhuM240In0.lGY2mZvIbXYdOrYPy-iHow"}
-						zoom={[12]}
-					/>
-				</div> */}
 
         <div className={cx("flex justify-between gap-x-4 xmt-[14vw]", styles.lower)}>
           <div className={cx("text-weave font-pr-bold nav-size basis-full border-b-[2px] border-weave pb-1 self-end", styles.copyRight)}>
