@@ -24,8 +24,8 @@ module.exports = {
         magenta: "var(--magenta)",
         separators: "var(--separators)",
         darkGrey: "var(-darkGrey)",
-        introLayer:"#49230D",
-        customPiecesLayer:"#653920",
+        introLayer: "#49230D",
+        customPiecesLayer: "#653920",
       },
       fontFamily: {
         "pr-light": "var(--primaryLightFont)",
@@ -37,13 +37,13 @@ module.exports = {
         "sec-medium": "var(--secondaryMediumFont)",
       },
       margin: {
-        "0.5": "0.5vw",
+        0.5: "0.5vw",
         1: "1vw",
         2: "1.3vw",
         3: "3vw",
       },
       padding: {
-        "0.5": "0.5vw",
+        0.5: "0.5vw",
         1: "1vw",
         2: "1.3vw",
         3: "3vw",

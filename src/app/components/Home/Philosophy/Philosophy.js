@@ -14,12 +14,13 @@ import rehypeRaw from "rehype-raw";
 const dummy_philosophy = {
   label: "Philosophy & method",
   title: "Each creation is a masterpiece that enriches your everyday living with beauty and purpose",
-  description: "Creating a legacy that celebrates the rooted heritage of craftsmanship and the future that blossoms from it. Merging two worlds into a singular universe of beauty.",
+  description:
+    "Creating a legacy that celebrates the rooted heritage of craftsmanship and the future that blossoms from it. Merging two worlds into a singular universe of beauty.",
   cta: {
     label: "See our studio",
-    url: "/studio"
-  }
-}
+    url: "/studio",
+  },
+};
 
 function Philosophy({ locale = "en", philosophy = dummy_philosophy }) {
   return (
@@ -32,7 +33,11 @@ function Philosophy({ locale = "en", philosophy = dummy_philosophy }) {
       {/* todo: fix this part of 3 images below */}
       <div className="sectionContainer flex gap-x-[10vw]">
         <div className="video pb-[40vw] relative">
-          <Image src={videoPoster} alt="Philosophy" />
+          {/* <Image src={videoPoster} alt="Philosophy" /> */}
+          <video autoPlay loop muted preload="auto" className="w-[40rem] h-[30rem] object-cover">
+            <source src={"/assets/media/carve.mp4"} type="video/mp4"></source>
+            Your browser doen't support video technology
+          </video>
 
           <div className="item absolute -right-[50%] top-[20%]">
             <Image src={item} alt="item" className="block" />

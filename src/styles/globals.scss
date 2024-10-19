@@ -20,40 +20,76 @@
   --darkGrey: #332d2d;
 
   // Font Sizes
-  --h0-size: 7.3vw; // 140/125
-  --h1-size: 5.06vw; // 97/95
-  --h2-size: 4.28vw; // 82/74
-  --h3-size: 4.17vw; // 80/85
-  --h4-size: 3.34vw; // 64/49.5
-  --h5-size: 2.97vw; // 57/57
-  --h6-size: 2.5vw; // 48/51
+  --h0-size: 8.75rem; // 140/125
+  --h1-size: 6rem; // 97/95
+  --h2-size: 5.12rem; // 82/74
+  --h3-size: 5rem; // 80/85
+  --h4-size: 4rem; // 64/49.5
+  --h5-size: 3.56rem; // 57/57
+  --h6-size: 3rem; // 48/51
+  // -------------
+  // --h0-size: 7.3vw; // 140/125
+  // --h1-size: 5.06vw; // 97/95
+  // --h2-size: 4.28vw; // 82/74
+  // --h3-size: 4.17vw; // 80/85
+  // --h4-size: 3.34vw; // 64/49.5
+  // --h5-size: 2.97vw; // 57/57
+  // --h6-size: 2.5vw; // 48/51
 
-  --sub-title1-size: 1.78vw; // 34/auto
-  --sub-title2-size: 1.46vw; // 28/auto
-  --sub-title3-size: 1.2vw; // 23/25
+  --sub-title1-size: 2.12rem; // 34/auto
+  --sub-title2-size: 1.75rem; // 28/auto
+  --sub-title3-size: 1.43rem; // 23/25
 
-  --paragraph1-size: 1.67vw; // 32/41
-  --paragraph2-size: 1.31vw; // 25/35
+  --paragraph1-size: 2rem; // 32/41
+  --paragraph2-size: 1.56rem; // 25/35
 
-  --overHeadTitle-size: 1.15vw; // 22/auto
+  --overHeadTitle-size: 1.37rem; // 22/auto
 
-  --caption1-size: 0.99vw; // 19/35
-  --caption2-size: 0.89vw; // 17/auto
+  --caption1-size: 1.18rem; // 19/35
+  --caption2-size: 1.06rem; // 17/auto
 
-  --footer-title-size: 1.1vw; // 21/auto
+  --footer-title-size: 1.31rem; // 21/auto
 
-  --menu-size: 3.9vw; // 74.6/auto
+  --menu-size: 4.66rem; // 74.6/auto
 
-  --nav-size: 0.84vw; // 16/auto
-  --nav-nums-size: 0.81vw; // 15.6/21.7
+  --nav-size: 1rem; // 16/auto
+  --nav-nums-size: 0.97rem; // 15.6/21.7
 
-  --cta-size: 1.15vw; // 22/auto
+  --cta-size: 1.37rem; // 22/auto
+  // -----------------------
+  // --sub-title1-size: 1.78vw; // 34/auto
+  // --sub-title2-size: 1.46vw; // 28/auto
+  // --sub-title3-size: 1.2vw; // 23/25
+
+  // --paragraph1-size: 1.67vw; // 32/41
+  // --paragraph2-size: 1.31vw; // 25/35
+
+  // --overHeadTitle-size: 1.15vw; // 22/auto
+
+  // --caption1-size: 0.99vw; // 19/35
+  // --caption2-size: 0.89vw; // 17/auto
+
+  // --footer-title-size: 1.1vw; // 21/auto
+
+  // --menu-size: 3.9vw; // 74.6/auto
+
+  // --nav-size: 0.84vw; // 16/auto
+  // --nav-nums-size: 0.81vw; // 15.6/21.7
+
+  // --cta-size: 1.15vw; // 22/auto
 
   // Spacing
   --letter-space: 0em;
   --sectionPaddingBottom: 5.9vw;
   --spaceX: 2.1vw;
   --spaceX-minor: calc(var(--spaceX)/2);
+
+  // ---------------------
+
+  // --letter-space: 0em;
+  // --sectionPaddingBottom: 5.9vw;
+  // --spaceX: 2.1vw;
+  // --spaceX-minor: calc(var(--spaceX)/2);
 
   @include medium-screen {
   }
