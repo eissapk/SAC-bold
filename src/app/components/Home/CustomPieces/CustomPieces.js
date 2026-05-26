@@ -10,16 +10,10 @@ import logo3 from "@/public/assets/media/home/logos/logo3.svg";
 import logo4 from "@/public/assets/media/home/logos/logo4.svg";
 import logo5 from "@/public/assets/media/home/logos/logo5.svg";
 import { pxPage, textH3, textBody } from "@/src/lib/ui";
+import { getHomeContent } from "@/src/lib/home";
 
-const dummy_customPieces = {
-  label: "Custom Pieces",
-  title: "Sculpting your imagination into pieces of exquisite artistry rooted in heritage and branched with modernity",
-  description: "Create your own custom pieces in collaboration with our artisans through a detailed craftsmanship process.",
-  cta1: { label: "View our case studies", url: "/case-study" },
-  cta2: { label: "Bring your imagination to life", url: "/creations" },
-};
-
-function CustomPieces({ locale = "en", customPieces = dummy_customPieces }) {
+function CustomPieces({ locale = "en", customPieces: customPiecesProp }) {
+  const customPieces = customPiecesProp ?? getHomeContent(locale).customPieces;
   const logos = [logo1, logo2, logo3, logo4, logo5];
 
   return (

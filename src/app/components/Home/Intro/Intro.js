@@ -6,13 +6,13 @@ import SectionTitle from "../../SectionTitle/SectionTitle";
 import item from "@/public/assets/media/home/item1.svg";
 import edge from "@/public/assets/media/home/intro-raw-edge.svg";
 import { pxPage, textH1 } from "@/src/lib/ui";
+import { getHomeContent } from "@/src/lib/home";
+import { getUiStrings } from "@/src/lib/ui-strings";
 
-const dummy_intro = {
-  title: "Crafted by Saudi artisans",
-  description: "Weaving the future of our culture through craftsmanship",
-};
+function Intro({ locale = "en", intro: introProp }) {
+  const intro = introProp ?? getHomeContent(locale).intro;
+  const ui = getUiStrings(locale);
 
-function Intro({ locale = "en", intro = dummy_intro }) {
   return (
     <div className="relative min-h-screen">
       <div className="absolute inset-0 -z-10 after:content-[''] after:absolute after:inset-0 after:bg-introLayer/30">
@@ -26,7 +26,7 @@ function Intro({ locale = "en", intro = dummy_intro }) {
           className="h-full w-full object-cover min-h-screen"
         >
           <source src={"/assets/media/hero.mp4"} type="video/mp4"></source>
-          Your browser doen't support video technology
+          {ui.videoUnsupported}
         </video>
       </div>
 

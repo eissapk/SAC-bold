@@ -4,11 +4,13 @@ import schema from "../schemas";
 import cx from "classnames";
 import { useState } from "react";
 import { textBodyLg, textCaption } from "@/src/lib/ui";
+import { getUiStrings } from "@/src/lib/ui-strings";
 
-// an example for yup, formik & strapi POST reuqests
-function NewsLetter() {
+function NewsLetter({ locale = "en" }) {
+	const ui = getUiStrings(locale);
 	const [showThanks, setShowThanks] = useState(false);
 	const [showFailure, setShowFailure] = useState(false);
+
 	async function submitHandler(vals, actions) {
 		console.log({ vals, actions });
 
@@ -16,7 +18,7 @@ function NewsLetter() {
 			const response = await fetch("http://localhost:1337/api/newsletters", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ data: { ...vals } }), // payload shape must be: body: JSON.strigify({data: myDummyData})
+				body: JSON.stringify({ data: { ...vals } }),
 			});
 			const data = await response.json();
 
@@ -43,14 +45,14 @@ function NewsLetter() {
 						<CustomField
 							type="email"
 							name="email"
-							placeholder="Your email"
+							placeholder={ui.newsletter.emailPlaceholder}
 							className={`pe-2 w-full ${textBodyLg} bg-transparent text-weave font-pr-regular placeholder:text-weave placeholder:font-pr-regular border-none outline-none`}
 						/>
-						{showThanks && <div className="bg-green text-white rounded absolute px-1 top-[120%]">Thanks!</div>}
-						{showFailure && <div className="bg-red text-white rounded absolute px-1 top-[120%]">Got Error, try again!</div>}
+						{showThanks && <div className="bg-green text-white rounded absolute px-1 top-[120%]">{ui.newsletter.thanks}</div>}
+						{showFailure && <div className="bg-red text-white rounded absolute px-1 top-[120%]">{ui.newsletter.error}</div>}
 					</div>
 					<button disabled={props.isSubmitting} type="submit" className={`shrink-0 basis-1/4 min-w-[5rem] ${textCaption} text-weave font-pr-light disabled:opacity-40`}>
-						Subscribe
+						{ui.newsletter.subscribe}
 					</button>
 				</Form>
 			)}

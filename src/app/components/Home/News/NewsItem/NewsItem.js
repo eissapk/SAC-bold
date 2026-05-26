@@ -4,24 +4,27 @@ import rehypeRaw from "rehype-raw";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
-import { pxPage, pbSection, textH3, textBody, textOverline } from "@/src/lib/ui";
+import { pxPage, ptPage, pbSection, textH3, textBody, textOverline } from "@/src/lib/ui";
+import { getUiStrings } from "@/src/lib/ui-strings";
 
 function NewsItem({ locale, blog = {} }) {
+	const ui = getUiStrings(locale);
+
 	useEffect(() => {
 		const translatedSlug = blog?.localizations?.data?.[0]?.attributes?.url;
 		localStorage.setItem("translatedSlug", translatedSlug || blog?.url || null);
 	}, [blog]);
 
-	const backLabel = locale === "ar" ? "العودة إلى الأخبار" : "Back to news";
+	const backLabel = ui.news.backToNews;
 
 	return (
-		<div className={`bg-weave ${pxPage} ${pbSection}`}>
+		<div className={`bg-weave ${pxPage} ${ptPage} ${pbSection}`}>
 			<article className="max-w-3xl mx-auto">
 				<Link
 					href={"/" + locale + "/news"}
 					className={`${textOverline} text-clay font-pr-medium hover:underline mb-6 inline-block`}
 				>
-					← {backLabel}
+					<span aria-hidden="true">{locale === "ar" ? "→" : "←"}</span> {backLabel}
 				</Link>
 
 				<p className={`${textOverline} font-pr-medium text-clay mb-3`}>{blog.date}</p>

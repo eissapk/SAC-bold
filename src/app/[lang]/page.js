@@ -8,21 +8,30 @@ import Philosophy from "@/src/app/components/Home/Philosophy/Philosophy";
 import News from "@/src/app/components/Home/News/News";
 import Footer from "@/src/app/components/Footer/Footer";
 import { getNewsList, getNewsSection } from "@/src/lib/news";
+import { getHomeContent } from "@/src/lib/home";
 
 export default async function page({ params }) {
-  const { data, blogs } = await getPageData(params.lang);
-  const newsSection = getNewsSection(params.lang);
+  const locale = params.lang === "ar" ? "ar" : "en";
+  const { data, blogs } = await getPageData(locale);
+  const newsSection = getNewsSection(locale);
+  const home = getHomeContent(locale);
+  const attrs = data?.data?.attributes;
 
   return (
     <>
-      <Header locale={params.lang} />
-      <Intro locale={params.lang} intro={data?.data?.attributes?.intro} />
-      <Products locale={params.lang} products={data?.data?.attributes?.products} summary={data?.data?.attributes?.intro?.summary} />
-      <Summary locale={params.lang} summary={data?.data?.attributes?.summary} />
-      <CustomPieces locale={params.lang} customPieces={data?.data?.attributes?.customPieces} />
-      <Philosophy locale={params.lang} philosophy={data?.data?.attributes?.philosophy} />
-      <News locale={params.lang} news={newsSection} blogs={blogs?.data} />
-      <Footer locale={params.lang} />
+      <Header locale={locale} />
+      <Intro locale={locale} intro={attrs?.intro ?? home.intro} />
+      <Products
+        locale={locale}
+        products={attrs?.products ?? home.products}
+        summary={attrs?.intro?.summary ?? home.productsSummary}
+        categoryLabel={home.productCategory}
+      />
+      <Summary locale={locale} summary={attrs?.summary ?? home.summary} />
+      <CustomPieces locale={locale} customPieces={attrs?.customPieces ?? home.customPieces} />
+      <Philosophy locale={locale} philosophy={attrs?.philosophy ?? home.philosophy} />
+      <News locale={locale} news={newsSection} blogs={blogs?.data} />
+      <Footer locale={locale} />
     </>
   );
 }
@@ -43,17 +52,19 @@ async function getPageData(locale) {
 }
 
 export async function generateMetadata({ params }) {
-  const data = await get("home", params.lang, "seo,seo.image");
+  const locale = params.lang === "ar" ? "ar" : "en";
+  const fallback = getHomeContent(locale).seo;
+  const data = await get("home", locale, "seo,seo.image");
   const seo = data?.data?.attributes?.seo;
   return {
-    title: seo?.title || "SAC | Saudi artisanal company",
-    description: seo?.description || "Weaving the future of our culture through craftsmanship",
+    title: seo?.title || fallback.title,
+    description: seo?.description || fallback.description,
     image: seo?.image?.data?.attributes?.url || "",
     openGraph: {
       type: "website",
       url: "",
-      title: seo?.title || "SAC | Saudi artisanal company",
-      description: seo?.description || "Weaving the future of our culture through craftsmanship",
+      title: seo?.title || fallback.title,
+      description: seo?.description || fallback.description,
       images: [seo?.image?.data?.attributes?.url || ""],
     },
   };

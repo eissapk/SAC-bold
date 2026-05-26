@@ -6,6 +6,7 @@ export const psPage = "ps-4 sm:ps-6 md:ps-8 lg:ps-12 xl:ps-16";
 
 export const pySection = "py-12 md:py-16 lg:py-24";
 export const ptSection = "pt-12 md:pt-16 lg:pt-24";
+export const ptPage = "pt-24 md:pt-28 lg:pt-32";
 export const pbSection = "pb-12 md:pb-16 lg:pb-24";
 
 export const textOverline = "text-overline sm:text-base lg:text-overline-lg font-pr-medium";

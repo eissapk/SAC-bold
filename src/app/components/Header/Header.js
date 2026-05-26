@@ -9,11 +9,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { pxPage, textOverline } from "@/src/lib/ui";
+import { getUiStrings } from "@/src/lib/ui-strings";
 
 function Header({ locale = "en", layout = "fixed" }) {
 	const [slug, setSlug] = useState(null);
 	const [scrolled, setScrolled] = useState(layout !== "fixed" ? true : false);
 	const pathname = usePathname();
+	const ui = getUiStrings(locale);
+
 	function headerHandler() {
 		if (layout == "fixed") {
 			if (window.pageYOffset >= 100) setScrolled(true);
@@ -51,7 +54,7 @@ function Header({ locale = "en", layout = "fixed" }) {
 			)}
 		>
 			<div className="shrink-0 w-1/4 min-w-[3rem]">
-				<button type="button" aria-label="Menu">
+				<button type="button" aria-label="Menu" className="hidden">
 					<Image
 						src={scrolled ? menuDark : menu}
 						alt=""
@@ -74,7 +77,7 @@ function Header({ locale = "en", layout = "fixed" }) {
 								"text-grey border-grey": scrolled,
 							})}
 						>
-							Our creations
+							{ui.header.creations}
 						</Link>
 					</li>
 					{locale == "en" && (

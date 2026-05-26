@@ -1,23 +1,22 @@
-import Header from "@/src/app/components/Header/Header";
+import PageShell from "@/src/app/components/PageShell/PageShell";
 import News from "@/src/app/components/News/News";
-import Footer from "@/src/app/components/Footer/Footer";
 import { getNewsList, getNewsSection } from "@/src/lib/news";
+import { parseLocale } from "@/src/lib/locale";
 
-export default async function page({ params }) {
-  const blogs = getNewsList(params.lang);
-  const section = getNewsSection(params.lang);
+export default function NewsPage({ params }) {
+  const locale = parseLocale(params.lang);
+  const blogs = getNewsList(locale);
+  const section = getNewsSection(locale);
 
   return (
-    <>
-      <Header locale={params.lang} layout="sticky" />
-      <News locale={params.lang} blogs={blogs.data} section={section} />
-      <Footer locale={params.lang} />
-    </>
+    <PageShell locale={locale}>
+      <News locale={locale} blogs={blogs.data} section={section} />
+    </PageShell>
   );
 }
 
 export async function generateMetadata({ params }) {
-  const isAr = params.lang === "ar";
+  const isAr = parseLocale(params.lang) === "ar";
   return {
     title: isAr ? "أخبارنا | SAC" : "News | SAC",
     description: isAr

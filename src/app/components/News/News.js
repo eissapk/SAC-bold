@@ -4,14 +4,14 @@ import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import Link from "next/link";
 import { getNewsList, getNewsSection } from "@/src/lib/news";
-import { pxPage, pbSection, textH3, textOverline, textBody } from "@/src/lib/ui";
+import { pxPage, ptPage, pbSection, textH3, textOverline, textBody } from "@/src/lib/ui";
 
 function News({ locale, blogs, section: sectionProp }) {
   const section = sectionProp || getNewsSection(locale);
   const items = blogs?.length ? blogs : getNewsList(locale).data;
 
   return (
-    <div className={`bg-weave ${pxPage} ${pbSection}`}>
+    <div className={`bg-weave ${pxPage} ${ptPage} ${pbSection}`}>
       <div className="font-pr-light text-grey pb-6 md:pb-8">
         <h3 className={textH3}>{section.title}</h3>
       </div>
