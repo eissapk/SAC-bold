@@ -1,8 +1,6 @@
 import { useEffect, useRef } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import styles from "./Map.module.scss";
-import cx from "classnames";
 
 function Map({ coords, token, style, zoom }) {
 	const mapRef = useRef();
@@ -24,7 +22,12 @@ function Map({ coords, token, style, zoom }) {
 		new mapboxgl.Marker(el).setLngLat([coords.lon, coords.lat]).addTo(map.current);
 	});
 
-	return <div ref={mapRef} className={cx(styles.section)}></div>;
+	return (
+		<div
+			ref={mapRef}
+			className="absolute w-full h-full left-0 top-0 z-[9] [&>div:last-of-type]:hidden [&_canvas]:rounded-[5px]"
+		></div>
+	);
 }
 
 export default Map;

@@ -1,49 +1,44 @@
 "use client";
-import styles from "./Footer.module.scss";
-import cx from "classnames";
 import Link from "next/link";
 import Image from "next/image";
 import edge from "../../../../public/assets/media/footer-raw-edge.svg";
 import logo from "../../../../public/assets/media/logo.svg";
 import NewsLetter from "../Forms/NewsLetter/NewsLetter";
+import { pxPage, textOverline, textFooterLink, textH4, textNav } from "@/src/lib/ui";
+import { getUiStrings } from "@/src/lib/ui-strings";
 
 function Footer({ locale = "en" }) {
-  const joinUsLinks = [
-    { link: "/" + locale + "/artisan", label: "As artisan" },
-    { link: "/" + locale + "/designer", label: "As designer" },
-    { link: "/" + locale + "/partner", label: "As partner" },
-  ];
-  const siteMapLinks = [
-    { link: "/" + locale + "/story", label: "The story" },
-    { link: "/" + locale + "/creations", label: "The creations" },
-    { link: "/" + locale + "/custom-designs", label: "Custom designs" },
-    { link: "/" + locale + "/studio", label: "The studio" },
-    { link: "/" + locale + "/workshops", label: "Workshops & artisans" },
-    { link: "/" + locale + "/contact", label: "Contact" },
-  ];
+  const ui = getUiStrings(locale);
+  const joinUsLinks = ui.footer.joinUsLinks.map((item) => ({
+    link: "/" + locale + item.path,
+    label: item.label,
+  }));
+  const siteMapLinks = ui.footer.siteMapLinks.map((item) => ({
+    link: "/" + locale + item.path,
+    label: item.label,
+  }));
 
   return (
     <>
       <div>
-        <video autoPlay loop muted preload="auto" className="object-cover w-full relative -bottom-7">
+        <video autoPlay loop muted preload="auto" playsInline className="object-cover w-full relative -bottom-7">
           <source src={"/assets/media/furnace.mp4"} type="video/mp4"></source>
-          Your browser doen't support video technology
+          {ui.videoUnsupported}
         </video>
       </div>
-      <footer className={cx("", styles.section, { [styles.ar]: locale == "ar" })}>
-        <div className={cx("w-full relative top-0.5", styles.layer)}>
-          <Image className="block w-full h-auto" src={edge} alt="footer-raw-edge" priority={false} />
-        </div>
-
-        <div className={cx("bg-grey spaceX", styles.sectionContainer)}>
-          <div className={cx("flex justify-between", styles.upper)}>
-            <div className={cx("flex gap-x-[13.8vw]", styles.upperInnerContainer)}>
-              <div className={cx("", styles.joinUs)}>
-                <div className={cx("overHeadTitle-size text-clay font-pr-medium", [styles.joinUsTitle])}>Join us</div>
-                <ul className={styles.joinUsLinks}>
+      <footer>
+        <div className={`bg-grey ${pxPage} pt-8 md:pt-12 pb-8 md:pb-10 relative`}>
+          <div className="w-full absolute -top-[18px] left-0 md:-top-[15px] hidden md:block">
+            <Image className="block w-full h-auto" src={edge} alt="" priority={false} width={1920} height={18} />
+          </div>
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-12">
+            <div className="flex flex-col sm:flex-row gap-10 sm:gap-16 lg:gap-24">
+              <div>
+                <div className={`${textOverline} text-clay font-pr-medium mb-4 md:mb-6`}>{ui.footer.joinUs}</div>
+                <ul className="space-y-2">
                   {joinUsLinks.map((item, index) => (
                     <li key={index}>
-                      <Link className="h4 text-weave font-pr-light leading-none" href={item.link}>
+                      <Link className={`${textH4} text-weave font-pr-light leading-none`} href={item.link}>
                         {item.label}
                       </Link>
                     </li>
@@ -51,11 +46,11 @@ function Footer({ locale = "en" }) {
                 </ul>
               </div>
 
-              <div className={styles.links}>
-                <ul>
+              <div>
+                <ul className="space-y-2">
                   {siteMapLinks.map((item, index) => (
                     <li key={index}>
-                      <Link className="h4 text-weave footer-title-size font-pr-light leading-none" href={item.link}>
+                      <Link className={`${textFooterLink} text-weave font-pr-light leading-none`} href={item.link}>
                         {item.label}
                       </Link>
                     </li>
@@ -64,19 +59,17 @@ function Footer({ locale = "en" }) {
               </div>
             </div>
 
-            <div className={styles.newsLetter}>
-              <div className={cx("overHeadTitle-size text-clay font-pr-medium", [styles.newsLetterTitle])}>Newsletter</div>
-              <NewsLetter />
+            <div className="w-full lg:max-w-sm shrink-0">
+              <div className={`${textOverline} text-clay font-pr-medium mb-4 md:mb-6`}>{ui.footer.newsletter}</div>
+              <NewsLetter locale={locale} />
             </div>
           </div>
 
-          <div className={cx("flex justify-between gap-x-4 xmt-[14vw]", styles.lower)}>
-            <div className={cx("text-weave font-pr-bold nav-size basis-full border-b-[2px] border-weave pb-1 self-end", styles.copyRight)}>
-              Saudi Artisanal Company © Copyright 2023
-            </div>
-            <div className={cx("relative top-1.5", styles.logo)}>
+          <div className="flex flex-col-reverse sm:flex-row sm:justify-between sm:items-end gap-6 mt-12 md:mt-16 lg:mt-24">
+            <div className={`${textNav} text-weave font-pr-bold w-full border-b-2 border-weave pb-2`}>{ui.footer.copyright}</div>
+            <div className="shrink-0 self-center sm:self-auto">
               <Link href={"/" + locale}>
-                <Image src={logo} alt="logo" className="block" />
+                <Image src={logo} alt="Saudi Artisanal Company" className="block h-10 md:h-auto w-auto" />
               </Link>
             </div>
           </div>

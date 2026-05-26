@@ -1,49 +1,41 @@
 "use client";
-import cx from "classnames";
 import Link from "next/link";
-import styles from "./News.module.scss";
 import Image from "next/image";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 import CTA from "../../CTA/CTA";
-import dummy_blogs from "@/src/lib/news";
+import { getNewsList, getNewsSection } from "@/src/lib/news";
+import { pxPage, pbSection, textH3, textOverline, textBody } from "@/src/lib/ui";
 
-const dummy_news = {
-  title: "Our news",
-  cta: {
-    label: "See all news",
-    url: "/news",
-  },
-};
+function News({ locale, news, blogs }) {
+  const section = news || getNewsSection(locale);
+  const items = blogs?.length ? blogs : getNewsList(locale).data;
 
-function News({ locale, news = dummy_news, blogs = dummy_blogs }) {
   return (
-    <div className={cx("bg-weave spaceX sectionPaddingBottom", styles.section, { [styles.ar]: locale === "ar" })}>
-      <div className="title font-pr-light text-grey pb-3">
-        <h3>{news.title}</h3>
+    <div className={`bg-weave ${pxPage} ${pbSection} lg:pt-48`}>
+      <div className="font-pr-light text-grey pb-6 md:pb-8">
+        <h3 className={textH3}>{section.title}</h3>
       </div>
-      <div className="sectionContainer">
-        <div className="news flex justify-between gap-x-[2.5vw]">
-          {blogs.map((item, index) => (
-            <Link key={index} href={"/" + locale + "/news/" + item?.attributes?.url}>
-              <div className="newsItem">
-                <div className="image w-full">
-                  <Image src={item?.attributes?.image?.data?.attributes?.url} className="w-full h-auto" alt={item?.attributes?.title} />
-                  {/* <img src={"http://localhost:1337" + item?.attributes?.image?.data?.attributes?.url} className="w-full h-auto" alt={item?.attributes?.title} /> */}
-                </div>
-                <div className="date overHeadTitle-size font-pr-medium text-grey pt-[1.5vw] pb-[0.8vw]">{item?.attributes?.date}</div>
-                <div className="description">
-                  <Markdown rehypePlugins={[rehypeRaw]} className="paragraph2-size font-pr-regular text-grey">
-                    {item?.attributes?.title}
-                  </Markdown>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="cta flex justify-center pt-[4.3vw]">
-          <CTA label={news.cta.label} color="weave" bg="grey" type="button" link={"/" + locale + news.cta.url} locale={locale} />
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        {items.map((item, index) => (
+          <Link key={item?.attributes?.url || index} href={"/" + locale + "/news/" + item.attributes.url} className="group">
+            <div className="w-full overflow-hidden">
+              <Image
+                src={item.attributes.image?.data?.attributes?.url}
+                className="w-full h-auto transition-transform group-hover:scale-[1.02]"
+                alt={item.attributes.title}
+                width={600}
+                height={400}
+              />
+            </div>
+            <div className={`${textOverline} font-pr-medium text-grey pt-4 pb-2`}>{item.attributes.date}</div>
+            <h2 className={`${textBody} font-pr-regular text-grey group-hover:text-clay transition-colors line-clamp-3`}>
+              {item.attributes.title}
+            </h2>
+            <p className="text-sm md:text-base text-grey/80 mt-2 line-clamp-2 font-pr-regular">{item.attributes.description}</p>
+          </Link>
+        ))}
+      </div>
+      <div className="flex justify-center pt-10 md:pt-14 lg:pt-16">
+        <CTA label={section.cta.label} color="weave" bg="grey" type="button" link={"/" + locale + section.cta.url} locale={locale} />
       </div>
     </div>
   );

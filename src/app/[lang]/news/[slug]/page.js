@@ -1,31 +1,32 @@
-import { get, getByUrl } from "@/src/lib/api.service";
-import Header from "@/src/app/components/Header/Header";
-import Footer from "@/src/app/components/Footer/Footer";
+import { notFound } from "next/navigation";
+import PageShell from "@/src/app/components/PageShell/PageShell";
 import NewsItem from "@/src/app/components/Home/News/NewsItem/NewsItem";
-import dummy_blogs from "@/src/lib/news";
+import { getNewsBySlug, getAllNewsSlugs } from "@/src/lib/news";
+import { parseLocale } from "@/src/lib/locale";
 
-export default async function page({ params }) {
-  const { blog } = await getPageData(params);
+export default function NewsArticlePage({ params }) {
+  const locale = parseLocale(params.lang);
+  const blog = getNewsBySlug(params.slug, locale);
+  if (!blog) notFound();
 
   return (
-    <>
-      <Header locale={params.lang} layout="sticky" />
-      {/* <NewsItem blog={blog?.data[0]?.attributes} /> */}
-      <NewsItem blog={blog?.attributes} />
-      <Footer locale={params.lang} />
-    </>
+    <PageShell locale={locale}>
+      <NewsItem locale={locale} blog={blog} />
+    </PageShell>
   );
 }
 
-async function getPageData({ lang, slug }) {
-  // const [blog] = await Promise.all([getByUrl("news-presses", lang, slug, "image,localizations")]);
-  const blog = dummy_blogs.find((item) => item.attributes.url == slug);
-  return { blog };
+export function generateStaticParams() {
+  const slugs = getAllNewsSlugs();
+  return ["en", "ar"].flatMap((lang) => slugs.map((slug) => ({ lang, slug })));
 }
 
-export async function generateMetadata({ params }) {
+export function generateMetadata({ params }) {
+  const locale = parseLocale(params.lang);
+  const blog = getNewsBySlug(params.slug, locale);
+  if (!blog) return { title: "SAC | News" };
   return {
-    title: "SAC | Saudi artisanal company",
-    description: "Weaving the future of our culture through craftsmanship",
+    title: `${blog.title} | SAC`,
+    description: blog.description?.slice(0, 160),
   };
 }

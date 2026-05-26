@@ -1,19 +1,16 @@
 import cx from "classnames";
-import styles from "./CTA.module.scss";
 import Link from "next/link";
+import { textOverline } from "@/src/lib/ui";
 
 function CTA({ className = "", type = "link", locale = "en", label = "", bg = "transparent", color = "grey", link = "/" }) {
   return (
-    <div className={cx(styles.section, { [styles.ar]: locale == "ar" })}>
+    <div>
       {type == "link" ? (
         <Link
-          className={cx("overHeadTitle-size font-pr-medium border-b-[2px] pb-[0.2vw]", {
+          className={cx(textOverline, "border-b-2 pb-0.5", {
             [className]: className,
-            ["border-grey"]: color == "grey",
-            ["text-grey"]: color == "grey",
-
-            ["border-weave"]: color == "weave",
-            ["text-weave"]: color == "weave",
+            "border-grey text-grey": color == "grey",
+            "border-weave text-weave": color == "weave",
           })}
           href={link}
         >
@@ -21,14 +18,14 @@ function CTA({ className = "", type = "link", locale = "en", label = "", bg = "t
         </Link>
       ) : (
         <Link
-          className={cx("overHeadTitle-size font-pr-medium px-1 py-[0.8vw] rounded", {
+          className={cx(textOverline, "px-4 py-2 md:px-5 md:py-3 rounded", {
             [className]: className,
-            
-            ["text-grey"]: color == "grey",
-            ["bg-grey"]: bg == "grey",
-
-            ["text-weave"]: color == "weave",
-            ["bg-weave"]: bg == "weave",
+            "text-grey bg-grey": color == "grey" && bg == "grey",
+            "text-weave bg-weave": color == "weave" && bg == "weave",
+            "text-grey": color == "grey" && bg != "grey",
+            "text-weave": color == "weave" && bg != "weave",
+            "bg-grey": bg == "grey",
+            "bg-weave": bg == "weave",
           })}
           href={link}
         >

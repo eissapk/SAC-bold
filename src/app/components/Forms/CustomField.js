@@ -10,8 +10,15 @@ function CustomField({ label, className = "", ...props }) {
 	return (
 		<>
 			{label && <label>{label}</label>}
-			<input autoComplete="off" {...props} {...field} className={cx(meta.error && meta.touched ? "input-error" : "", className)} />
-			{meta.error && meta.touched && <div className="error absolute top-[110%]">{meta.error}</div>}
+			<input
+				autoComplete="off"
+				{...props}
+				{...field}
+				className={cx(meta.error && meta.touched ? "border-[#fc8181]" : "", className)}
+			/>
+			{meta.error && meta.touched && (
+				<div className="text-[#fc8181] text-xs text-left mt-1 absolute top-[110%]">{meta.error}</div>
+			)}
 		</>
 	);
 }
