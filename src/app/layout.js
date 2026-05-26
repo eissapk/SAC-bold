@@ -1,4 +1,4 @@
-import "@/src/styles/globals.scss";
+import "@/src/styles/globals.css";
 // import { useLocale } from "next-intl";
 import localFont from "next/font/local";
 

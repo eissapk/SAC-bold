@@ -1,5 +1,4 @@
 "use client";
-import styles from "./Header.module.scss";
 import Image from "next/image";
 import logo from "@/public/assets/media/logo.svg";
 import logoDark from "@/public/assets/media/logo-dark.svg";
@@ -40,34 +39,60 @@ function Header({ locale = "en", layout = "fixed" }) {
 	}
 
 	return (
-		<header className={cx("spaceX", styles.section, { [styles.scrolled]: scrolled, [styles.ar]: locale == "ar", [layout]: layout })}>
-			<div className={styles.menuIcon}>
+		<header
+			className={cx("spaceX left-0 top-0 z-[999] w-full py-[2.2vw] flex items-center justify-between", layout, {
+				"bg-weave py-[1vw] transition-all": scrolled,
+			})}
+		>
+			<div className="min-w-[25%]">
 				<button type="button">
-					<Image src={scrolled ? menuDark : menu} alt="menu-icon" />
+					<Image
+						src={scrolled ? menuDark : menu}
+						alt="menu-icon"
+						className={cx("block pointer-events-none", { "rotate-180": locale == "ar" })}
+					/>
 				</button>
 			</div>
-			<div className={styles.logo}>
+			<div>
 				<Link href={"/" + locale}>
 					<Image src={scrolled ? logoDark : logo} alt="logo" />
 				</Link>
 			</div>
-			<div className={styles.links}>
-				<ul>
+			<div className="min-w-[25%]">
+				<ul className="flex justify-end">
 					<li className="pe-1">
-						<Link href={"/" + locale + "/creations"} className="overHeadTitle-size">
+						<Link
+							href={"/" + locale + "/creations"}
+							className={cx("overHeadTitle-size font-pr-medium border-b-2", {
+								"text-weave border-weave": !scrolled,
+								"text-grey border-grey": scrolled,
+							})}
+						>
 							Our creations
 						</Link>
 					</li>
 					{locale == "en" && (
 						<li>
-							<a href={langSwitcher("ar")} className="overHeadTitle-size">
+							<a
+								href={langSwitcher("ar")}
+								className={cx("overHeadTitle-size font-pr-medium border-none", {
+									"text-weave": !scrolled,
+									"text-grey": scrolled,
+								})}
+							>
 								العربية
 							</a>
 						</li>
 					)}
 					{locale == "ar" && (
 						<li>
-							<a href={langSwitcher("en")} className="overHeadTitle-size">
+							<a
+								href={langSwitcher("en")}
+								className={cx("overHeadTitle-size font-pr-medium border-none", {
+									"text-weave": !scrolled,
+									"text-grey": scrolled,
+								})}
+							>
 								English
 							</a>
 						</li>

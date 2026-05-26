@@ -1,7 +1,5 @@
 "use client";
-import cx from "classnames";
 import Link from "next/link";
-import styles from "./News.module.scss";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -18,7 +16,7 @@ const dummy_news = {
 
 function News({ locale, news = dummy_news, blogs = dummy_blogs }) {
   return (
-    <div className={cx("bg-weave spaceX sectionPaddingBottom", styles.section, { [styles.ar]: locale === "ar" })}>
+    <div className="bg-weave spaceX sectionPaddingBottom">
       <div className="title font-pr-light text-grey pb-3">
         <h3>{news.title}</h3>
       </div>

@@ -1,5 +1,4 @@
 "use client";
-import styles from "./Footer.module.scss";
 import cx from "classnames";
 import Link from "next/link";
 import Image from "next/image";
@@ -30,17 +29,17 @@ function Footer({ locale = "en" }) {
           Your browser doen't support video technology
         </video>
       </div>
-      <footer className={cx("", styles.section, { [styles.ar]: locale == "ar" })}>
-        <div className={cx("w-full relative top-0.5", styles.layer)}>
+      <footer>
+        <div className="w-full relative top-0.5">
           <Image className="block w-full h-auto" src={edge} alt="footer-raw-edge" priority={false} />
         </div>
 
-        <div className={cx("bg-grey spaceX", styles.sectionContainer)}>
-          <div className={cx("flex justify-between", styles.upper)}>
-            <div className={cx("flex gap-x-[13.8vw]", styles.upperInnerContainer)}>
-              <div className={cx("", styles.joinUs)}>
-                <div className={cx("overHeadTitle-size text-clay font-pr-medium", [styles.joinUsTitle])}>Join us</div>
-                <ul className={styles.joinUsLinks}>
+        <div className="bg-grey spaceX pt-[3.3vw] pb-[2.75vw]">
+          <div className="flex justify-between">
+            <div className="flex gap-x-[13.8vw]">
+              <div>
+                <div className="overHeadTitle-size text-clay font-pr-medium mb-[1.5vw]">Join us</div>
+                <ul>
                   {joinUsLinks.map((item, index) => (
                     <li key={index}>
                       <Link className="h4 text-weave font-pr-light leading-none" href={item.link}>
@@ -51,7 +50,7 @@ function Footer({ locale = "en" }) {
                 </ul>
               </div>
 
-              <div className={styles.links}>
+              <div className="mt-[1.5vw]">
                 <ul>
                   {siteMapLinks.map((item, index) => (
                     <li key={index}>
@@ -64,17 +63,17 @@ function Footer({ locale = "en" }) {
               </div>
             </div>
 
-            <div className={styles.newsLetter}>
-              <div className={cx("overHeadTitle-size text-clay font-pr-medium", [styles.newsLetterTitle])}>Newsletter</div>
+            <div>
+              <div className="overHeadTitle-size text-clay font-pr-medium mb-[1.5vw]">Newsletter</div>
               <NewsLetter />
             </div>
           </div>
 
-          <div className={cx("flex justify-between gap-x-4 xmt-[14vw]", styles.lower)}>
-            <div className={cx("text-weave font-pr-bold nav-size basis-full border-b-[2px] border-weave pb-1 self-end", styles.copyRight)}>
+          <div className="flex justify-between gap-x-4 xmt-[14vw]">
+            <div className="text-weave font-pr-bold nav-size basis-full border-b-[2px] border-weave pb-1 self-end">
               Saudi Artisanal Company © Copyright 2023
             </div>
-            <div className={cx("relative top-1.5", styles.logo)}>
+            <div className="relative top-1.5">
               <Link href={"/" + locale}>
                 <Image src={logo} alt="logo" className="block" />
               </Link>

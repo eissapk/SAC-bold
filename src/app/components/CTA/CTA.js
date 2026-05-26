@@ -1,10 +1,9 @@
 import cx from "classnames";
-import styles from "./CTA.module.scss";
 import Link from "next/link";
 
 function CTA({ className = "", type = "link", locale = "en", label = "", bg = "transparent", color = "grey", link = "/" }) {
   return (
-    <div className={cx(styles.section, { [styles.ar]: locale == "ar" })}>
+    <div>
       {type == "link" ? (
         <Link
           className={cx("overHeadTitle-size font-pr-medium border-b-[2px] pb-[0.2vw]", {

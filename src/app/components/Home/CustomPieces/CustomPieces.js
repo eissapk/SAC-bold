@@ -1,5 +1,3 @@
-import cx from "classnames";
-import styles from "./CustomPieces.module.scss";
 import Image from "next/image";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import CTA from "../../CTA/CTA";
@@ -30,29 +28,29 @@ function CustomPieces({ locale = "en", customPieces = dummy_customPieces }) {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo3];
 
   return (
-    <div className={cx(styles.section, "", { [styles.ar]: locale == "ar" })}>
-      <div className={cx(styles.image, "")}>
-        <Image src={bg} alt="custom-pieces" className="" />
+    <div className="relative">
+      <div className="relative w-full h-full -z-10 after:content-[''] after:absolute after:w-full after:h-full after:left-0 after:top-0 after:bg-customPiecesLayer/40">
+        <Image src={bg} alt="custom-pieces" className="h-auto w-full object-cover" />
       </div>
 
-      <div className={styles.content}>
-        <div className={styles.innerContent}>
+      <div className="absolute left-0 top-0 w-full h-full">
+        <div className="absolute left-0 right-0 top-[55%] -translate-y-[55%]">
           <SectionTitle color="text-weave" label={customPieces.label} locale={locale} />
-          <div className={styles.title}>
+          <div className="pt-1 text-weave font-pr-light text-center w-[60%] mx-auto">
             <h3 className="leading-none">{customPieces.title}</h3>
           </div>
 
-          <div className={cx("paragraph2-size", styles.description)}>
+          <div className="paragraph2-size text-weave font-pr-regular text-center pt-[1.6vw] w-[33%] mx-auto">
             <Markdown rehypePlugins={[rehypeRaw]}>{customPieces.description}</Markdown>
           </div>
 
-          <div className={styles.cta}>
+          <div className="flex gap-x-[1.9vw] justify-center pt-[3.1vw]">
             <CTA color="grey" bg="weave" locale={locale} link={"/" + locale + customPieces.cta1.url} type="button" label={customPieces.cta1.label} />
             <CTA color="weave" locale={locale} link={"/" + locale + customPieces.cta2.url} type="link" label={customPieces.cta2.label} />
           </div>
 
-          <div className={styles.logos}>
-            <ul>
+          <div className="pt-[6vw] px-[calc(var(--spaceX)*3)]">
+            <ul className="flex justify-between w-full">
               {logos.map((url, index) => (
                 <li key={index}>
                   <Image src={url} alt="logo" />

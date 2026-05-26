@@ -1,4 +1,3 @@
-import "./NewsLetter.scss";
 import { Form, Formik } from "formik";
 import CustomField from "../CustomField";
 import schema from "../schemas";

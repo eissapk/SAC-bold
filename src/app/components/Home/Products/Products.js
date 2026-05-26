@@ -1,6 +1,4 @@
 "use client";
-import styles from "./Products.module.scss";
-import cx from "classnames";
 import Image from "next/image";
 import product1 from "@/public/assets/media/home/products/product1.png";
 import product2 from "@/public/assets/media/home/products/product2.png";
@@ -66,28 +64,28 @@ const dummy_summary =
 
 function Products({ locale = "en", products = dummy_products, summary = dummy_summary }) {
   return (
-    <div className={cx("spaceX-minor", styles.section, { [styles.ar]: locale == "ar" })}>
-      <div className={cx("spaceX-minor", styles.title)}>
+    <div className="spaceX-minor bg-weave pt-[4.2vw]">
+      <div className="spaceX-minor text-grey font-pr-light pb-[7vw]">
         <h3 className="leading-none">{summary}</h3>
       </div>
 
-      <div className={styles.products}>
+      <div className="grid grid-cols-2 gap-[1vw]">
         {products.map((product, index) => (
-          <div className={styles.product} key={index}>
-            <div className={styles.image}>
-              <Image src={product?.image} alt={product?.title} />
+          <div className="relative" key={index}>
+            <div>
+              <Image src={product?.image} alt={product?.title} className="w-full" />
               {/* <img src={"http://localhost:1337" + product?.image?.data?.attributes?.url} alt={product?.title} /> */}
             </div>
 
-            <div className={styles.content}>
-              <div className={styles.innerContent}>
-                <div className={cx("footer-title-size", styles.label)}>Category</div>
-                <div className={cx(styles.contentTitle)}>
+            <div className="absolute w-full left-0 bottom-0 flex items-center justify-between px-[1.5vw]">
+              <div className="w-[40%]">
+                <div className="footer-title-size text-grey font-pr-light">Category</div>
+                <div className="font-pr-light text-grey pb-[2vw] pt-1">
                   <h5 className="leading-none">{product?.title}</h5>
                 </div>
               </div>
 
-              <div className={styles.cta}>
+              <div className="self-end pb-[2vw] pe-1">
                 <CTA type="link" label={product.cta.label} link={"/" + locale + "/products" + product.cta.url} />
               </div>
             </div>

@@ -1,6 +1,4 @@
 "use client";
-import cx from "classnames";
-import styles from "./Summary.module.scss";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import Image from "next/image";
 import summaryImg from "@/public/assets/media/home/summary.png";
@@ -17,21 +15,21 @@ const dummy_summary = {
 
 function Summary({ locale = "en", summary = dummy_summary }) {
   return (
-    <div className={cx("sectionPaddingTop", styles.section, { [styles.ar]: locale == "ar" })}>
-      <div className={cx("spaceX", styles.sectionContainer)}>
+    <div className="sectionPaddingTop bg-weave">
+      <div className="spaceX">
         <SectionTitle color="text-clay" label={summary.label} align="left" locale={locale} />
-        <div className={styles.title}>
+        <div className="font-pr-light text-grey pt-1 w-[80%]">
           <h3 className=" leading-none">{summary.title}</h3>
         </div>
 
-        <div className={cx("paragraph2-size", styles.description)}>
+        <div className="paragraph2-size flex justify-end font-pr-regular text-grey pt-[7vw] pb-[4.2vw] w-[73%]">
           <Markdown className="w-[29%]" rehypePlugins={[rehypeRaw]}>
             {summary.description}
           </Markdown>
         </div>
       </div>
 
-      <div className={styles.video}>
+      <div>
         {/* <Image src={summaryImg} alt="summary" /> */}
         <video poster={summaryImg} autoPlay loop muted preload="auto" className="">
           <source src={"/assets/media/wheel.mp4"} type="video/mp4"></source>

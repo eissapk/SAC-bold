@@ -1,5 +1,3 @@
-import cx from "classnames";
-import styles from "./Philosophy.module.scss";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import Image from "next/image";
 import videoPoster from "@/public/assets/media/home/philosophy/video.png";
@@ -24,7 +22,7 @@ const dummy_philosophy = {
 
 function Philosophy({ locale = "en", philosophy = dummy_philosophy }) {
   return (
-    <div className={cx(" bg-weave sectionPaddingTop spaceX-start", styles.section, { [styles.ar]: locale == "ar" })}>
+    <div className="bg-weave sectionPaddingTop spaceX-start">
       <SectionTitle label={philosophy.label} locale={locale} color="text-clay" align="start" />
       <div className="title font-pr-light text-grey pt-[1.5vw] pb-[8.3vw]">
         <h3 className="leading-none w-[70%]">{philosophy.title}</h3>
