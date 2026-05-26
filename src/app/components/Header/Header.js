@@ -8,6 +8,7 @@ import cx from "classnames";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { pxPage, textOverline } from "@/src/lib/ui";
 
 function Header({ locale = "en", layout = "fixed" }) {
 	const [slug, setSlug] = useState(null);
@@ -40,30 +41,35 @@ function Header({ locale = "en", layout = "fixed" }) {
 
 	return (
 		<header
-			className={cx("spaceX left-0 top-0 z-[999] w-full py-[2.2vw] flex items-center justify-between", layout, {
-				"bg-weave py-[1vw] transition-all": scrolled,
-			})}
+			className={cx(
+				pxPage,
+				"left-0 top-0 z-[999] w-full py-4 md:py-5 flex items-center justify-between gap-4",
+				layout,
+				{
+					"bg-weave py-2 md:py-3 transition-all": scrolled,
+				}
+			)}
 		>
-			<div className="min-w-[25%]">
-				<button type="button">
+			<div className="shrink-0 w-1/4 min-w-[3rem]">
+				<button type="button" aria-label="Menu">
 					<Image
 						src={scrolled ? menuDark : menu}
-						alt="menu-icon"
-						className={cx("block pointer-events-none", { "rotate-180": locale == "ar" })}
+						alt=""
+						className={cx("block pointer-events-none w-8 h-8 md:w-auto md:h-auto", { "rotate-180": locale == "ar" })}
 					/>
 				</button>
 			</div>
-			<div>
+			<div className="shrink-0 flex justify-center">
 				<Link href={"/" + locale}>
-					<Image src={scrolled ? logoDark : logo} alt="logo" />
+					<Image src={scrolled ? logoDark : logo} alt="Saudi Artisanal Company" className="h-8 md:h-auto w-auto" />
 				</Link>
 			</div>
-			<div className="min-w-[25%]">
-				<ul className="flex justify-end">
-					<li className="pe-1">
+			<div className="shrink-0 w-1/4 min-w-[3rem]">
+				<ul className="flex justify-end items-center gap-2 md:gap-4">
+					<li>
 						<Link
 							href={"/" + locale + "/creations"}
-							className={cx("overHeadTitle-size font-pr-medium border-b-2", {
+							className={cx(textOverline, "border-b-2 whitespace-nowrap", {
 								"text-weave border-weave": !scrolled,
 								"text-grey border-grey": scrolled,
 							})}
@@ -75,7 +81,7 @@ function Header({ locale = "en", layout = "fixed" }) {
 						<li>
 							<a
 								href={langSwitcher("ar")}
-								className={cx("overHeadTitle-size font-pr-medium border-none", {
+								className={cx(textOverline, "whitespace-nowrap", {
 									"text-weave": !scrolled,
 									"text-grey": scrolled,
 								})}
@@ -88,7 +94,7 @@ function Header({ locale = "en", layout = "fixed" }) {
 						<li>
 							<a
 								href={langSwitcher("en")}
-								className={cx("overHeadTitle-size font-pr-medium border-none", {
+								className={cx(textOverline, "whitespace-nowrap", {
 									"text-weave": !scrolled,
 									"text-grey": scrolled,
 								})}

@@ -3,6 +3,7 @@ import CustomField from "../CustomField";
 import schema from "../schemas";
 import cx from "classnames";
 import { useState } from "react";
+import { textBodyLg, textCaption } from "@/src/lib/ui";
 
 // an example for yup, formik & strapi POST reuqests
 function NewsLetter() {
@@ -43,12 +44,12 @@ function NewsLetter() {
 							type="email"
 							name="email"
 							placeholder="Your email"
-							className="pe-1 bg-transparent text-weave font-pr-regular paragraph1-size placeholder:text-weave placeholder:font-pr-regular border-none outline-none"
+							className={`pe-2 w-full ${textBodyLg} bg-transparent text-weave font-pr-regular placeholder:text-weave placeholder:font-pr-regular border-none outline-none`}
 						/>
 						{showThanks && <div className="bg-green text-white rounded absolute px-1 top-[120%]">Thanks!</div>}
 						{showFailure && <div className="bg-red text-white rounded absolute px-1 top-[120%]">Got Error, try again!</div>}
 					</div>
-					<button disabled={props.isSubmitting} type="submit" className="basis-[20%] caption2-size text-weave font-pr-light">
+					<button disabled={props.isSubmitting} type="submit" className={`shrink-0 basis-1/4 min-w-[5rem] ${textCaption} text-weave font-pr-light disabled:opacity-40`}>
 						Subscribe
 					</button>
 				</Form>
